@@ -4,3 +4,4 @@ __pycache__
 *.pyc
 superlist/__pycache__
 .idea/
+.idea/workspace.xml
