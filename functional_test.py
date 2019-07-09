@@ -1,10 +1,27 @@
 from selenium import webdriver
+import unittest
 
-browser = webdriver.Firefox(executable_path='/Users/chengkrilo/projects/selenium_py36/geckodriver')
-browser.maximize_window()
-browser.get('http://localhost:8000')
+class NewVisitorTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.browser = webdriver.Firefox(executable_path='/Users/chengkrilo/projects/selenium_py36/geckodriver')
 
-assert 'To-Do in browser.title'
+    def tearDown(self) -> None:
+        self.browser.quit()
+
+    def test_can_start_a_list_and_retrieve_it_later(self):
+        self.browser.get('http://localhost:8000')
+        self.assertIn('To-Do', self.browser.title)
+        self.fail('Finish the test!')
+
+if __name__ == '__main__':
+    unittest.main(warnings='ignore')
+
+# browser = webdriver.Firefox(executable_path='/Users/chengkrilo/projects/selenium_py36/geckodriver')
+# browser.maximize_window()
+#
+#
+# try:
+#     assert 'To-Do' in browser.title
 
 # 應用邀請她輸入一個待辦事項
 
@@ -27,5 +44,5 @@ assert 'To-Do in browser.title'
 # 她訪問那個URL，發現她的待辦事項列表還在
 
 # 她很滿意，去睡覺了
-
-# browser.quit()
+# finally:
+#     browser.quit()
