@@ -5,6 +5,6 @@ app_name = 'lists'
 
 urlpatterns = [
     re_path(r"^hello?/$", views.index),
-    re_path(r"^$", views.home_page, name='home')
+    path('', views.home_page, name='home')
 
 ]
